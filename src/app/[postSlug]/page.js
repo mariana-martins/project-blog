@@ -7,11 +7,12 @@ import { BLOG_TITLE } from '@/constants';
 
 import styles from './postSlug.module.css';
 
-const getCachedBlogPost = cache(loadBlogPost);
-
 export async function generateMetadata({ params }) {
   const { postSlug } = await params;
-  const { frontmatter } = await getCachedBlogPost(postSlug);
+
+  const { frontmatter } = await loadBlogPost(
+    postSlug
+  );
 
   return {
     title: `${frontmatter.title} • ${BLOG_TITLE}`,
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }) {
 
 async function BlogPost({ params }) {
   const { postSlug } = await params;
-  const { frontmatter, content } = await getCachedBlogPost(postSlug);
+  const { frontmatter, content } = await loadBlogPost(postSlug);
 
   return (
     <article className={styles.wrapper}>
