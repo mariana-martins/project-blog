@@ -1,5 +1,6 @@
 import React, { cache } from 'react';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import COMPONENT_LIST from '@/helpers/mdx-components';
 
 import BlogHero from '@/components/BlogHero';
 import { loadBlogPost } from '@/helpers/file-helpers';
@@ -34,9 +35,7 @@ async function BlogPost({ params }) {
       <div className={styles.page}>
         <MDXRemote
           source={content}
-          components={{
-            pre: CodeSnippet
-          }}
+          components={COMPONENT_LIST}
         />
       </div>
     </article>
