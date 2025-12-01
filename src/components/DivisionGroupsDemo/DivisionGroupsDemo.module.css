@@ -58,7 +58,7 @@
 .remainderArea {
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 8px;
   /* background: var(--color-gray-100); */
