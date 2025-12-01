@@ -4,6 +4,7 @@ import {
   Spline_Sans_Mono,
 } from 'next/font/google';
 import clsx from 'clsx';
+import SetMotionPreferences from '@/components/SetMotionPreferences';
 
 import { BLOG_TITLE, LIGHT_TOKENS, DARK_TOKENS } from '@/constants';
 
@@ -34,18 +35,20 @@ function RootLayout({ children }) {
   const theme = 'light';
 
   return (
-    <html
-      lang="en"
-      className={clsx(mainFont.variable, monoFont.variable)}
-      data-color-theme={theme}
-      style={theme === 'light' ? LIGHT_TOKENS : DARK_TOKENS}
-    >
-      <body>
-        <Header theme={theme} />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <SetMotionPreferences>
+      <html
+        lang="en"
+        className={clsx(mainFont.variable, monoFont.variable)}
+        data-color-theme={theme}
+        style={theme === 'light' ? LIGHT_TOKENS : DARK_TOKENS}
+      >
+        <body>
+          <Header theme={theme} />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </SetMotionPreferences>
   );
 }
 
